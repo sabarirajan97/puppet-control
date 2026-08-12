@@ -1,4 +1,4 @@
-file { '/tmp/puppet-test.txt':
+file { '/tmp/puppet-demo.txt':
   ensure  => file,
-  content => "Managed by Puppet via r10k\n",
+  content => "Hello from Puppet Server!\n",
 }
