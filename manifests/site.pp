@@ -1,4 +1,10 @@
-file { '/tmp/puppet-demo.txt':
-  ensure  => file,
-  content => "Hello from Puppet Server!\n",
+node 'puppetclient.example.com' {
+
+  $message = lookup('message')
+
+  file { '/tmp/r10k-hiera-test.txt':
+    ensure  => file,
+    content => "${message}\n",
+  }
+
 }
