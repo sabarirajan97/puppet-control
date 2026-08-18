@@ -7,4 +7,23 @@ node 'puppetclient.example.com' {
     content => "${message}\n",
   }
 
+  file { '/tmp/puppet-demo.txt':
+    ensure  => file,
+    content => "Hello from Puppet Server!\n",
+  }
+
+  file { '/tmp/hiera-test.txt':
+    ensure  => file,
+    content => lookup('message'),
+  }
+
+  package { 'httpd':
+    ensure => installed,
+  }
+
+  service { 'httpd':
+    ensure  => running,
+    enable  => true,
+    require => Package['httpd'],
+  }
 }
